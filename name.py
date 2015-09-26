@@ -1,7 +1,21 @@
 import json
 
 
+def student_teacher(student, data_teachers, data_students):
+    # Возвращает всех учителей заданного ученика
+    teachers = []
+    for line in data_students:
+        if student == '%s %s' % (line['name'], line['surname']):
+            class_student = line['class']
+            for line2 in data_teachers:
+                for class_teacher in line2['class']:
+                    if class_teacher == class_student:
+                        teachers.append('%s %s' % (line2['name'], line['surname']))
+    return teachers
+
+
 def teacher_student(teacher, data_teachers, data_students):
+    # Возращает всех учеников заданного учителя.
     students = []
     for dict_el in data_teachers:
         if teacher == '%s %s' % (dict_el['name'], dict_el['surname']):
@@ -15,6 +29,7 @@ def teacher_student(teacher, data_teachers, data_students):
 
 
 def name(data):
+    # Возвращает все имена учеников, написанных в файле
     lst_name = []
     for dict_data in data:
         lst_name.append(dict_data['name'])
@@ -22,6 +37,7 @@ def name(data):
 
 
 def class_room(data, student_class):
+    # Возвращает всех учеников заданного класса или сообщение о том, что такого класса нет.
     lst_student = []
     for dict_data in data:
         if dict_data['class'] == student_class:
@@ -32,6 +48,7 @@ def class_room(data, student_class):
 
 
 def school(data):
+    # Возвращает все школы, записанные в файле
     lst_school = []
     for dict_data in data:
         lst_school.append(dict_data['school'])
@@ -64,11 +81,17 @@ print('1.1.4:', '\n')
 for el in schools:
     print(el)
 
-print('1.2:', '\n')
-teacher = 'Владимир Вышкин'
-teacher_print, students = teacher_student(teacher, data_teachers, data_students)
+print('1.2.1:', '\n')
+teacher = 'Александр Черный'
+teacher_print, students_list = teacher_student(teacher, data_teachers, data_students)
 print(teacher_print)
-for el in students:
+for el in students_list:
+    print(el)
+
+print('1.2.2:', '\n')
+student = 'Иван Иванов'
+teachers_list = student_teacher(student, data_teachers, data_students)
+for el in teachers_list:
     print(el)
 
 
