@@ -1,37 +1,28 @@
 import json
 
 
-def student_add(data_students):
-    # Записывает студента в файл
-    student = 'Иван Иванович Краснов,Максим Максимович Максим,Дима Дмитриевич Дмитриев,Денис Денисович Денисов'
-    student = student.split(',')
-
-    dict_student = {'name': student[0], 'surname': student[2], 'middle_name': student[1]}
-    dict_student = json.dumps(dict_student, sort_keys=True, ensure_ascii=False, indent='')
-    data_students.write(dict_student)
+# def find_teacher(file_name, teacher, class_):
+#     file = json.load(open(file_name, 'r'))
+#     teacher = teacher.split(' ')
+#     for line in file:
+#         if file['name'] == teacher[0] and file['surname'] == teacher[1]:
+#             file['class'] == class_
 
 
-def teacher_add(data_teachers):
-    # Записывает учителя в файл
-    teacher = 'Максим Максимович Меньшиков'
-    teacher = teacher.split(' ')
-    class_teacher = '5А,11Б,7А'
-    class_teacher = class_teacher.split(',')
-    dict_teacher = {'name': teacher[0], 'surname': teacher[2], 'middle_name': teacher[1], 'class': class_teacher}
-    dict_teacher = json.dumps(dict_teacher, sort_keys=True, ensure_ascii=False, indent='')
-    data_teachers.write(dict_teacher)
+def save_data(file_name, dict_list):
+    file = open(file_name, 'w')
+    dict_list = json.dumps(dict_list, sort_keys=True, ensure_ascii=False, indent='')
+    file.write(dict_list)
+    file.close()
 
 
-data_teachers = open('My_Teachers', 'r')
-data_students = open('My_Students', 'r')
-print(data_teachers.read())
-print(data_students.read())
-data_teachers.close()
-data_students.close()
+students = [{'name': 'Иван', 'surname': 'Иванов', 'middle_name': 'Иванович'}, {'name': 'Дмитрий', 'surname': 'Дмитриев', 'middle_name': 'Дмитриевич'}]
+teachers = [{'name': 'Александр', 'surname': 'Пушкин', 'middle_name': 'Сергеевич', 'class': '5А'}, {'name': 'Фёдор', 'surname': 'Достоевский', 'middle_name': 'Михайлович', 'class': '6Б'}]
 
-data_teachers = open('My_Teachers', 'w')
-data_students = open('My_Students', 'w')
+save_data('My_Students', students)
+save_data('My_Teachers', teachers)
 
-student_add(data_students)
-teacher_add(data_teachers)
-
+# teacher = 'Александр Пушкин'
+# class_ = '5А'
+# if find_teacher('My_Teachers', teacher):
+#

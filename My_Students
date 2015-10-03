@@ -1,21 +1,12 @@
+[
 {
 "middle_name": "Иванович",
 "name": "Иван",
-"surname": "Краснов"
-}{
-"middle_name": "Иванович",
-"name": "Иван",
-"surname": "Краснов"
-}{
-"middle_name": "Иванович",
-"name": "Иван",
-"surname": "Краснов"
-}{
-"middle_name": "Иванович",
-"name": "Иван",
-"surname": "Краснов"
-}{
-"middle_name": "Иванович",
-"name": "Иван",
-"surname": "Краснов"
+"surname": "Иванов"
+},
+{
+"middle_name": "Дмитриевич",
+"name": "Дмитрий",
+"surname": "Дмитриев"
 }
+]
