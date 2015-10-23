@@ -8,10 +8,10 @@ def get_index(data, surname):
 
 
 def save_data(file_name, dict_list):
-    file = open(file_name, 'w')
-    dict_list = json.dumps(dict_list, sort_keys=True, ensure_ascii=False, indent='')
-    file.write(dict_list)
-    file.close()
+    with open(file_name, 'w') as file:
+        dict_list = json.dumps(dict_list, sort_keys=True, ensure_ascii=False, indent='')
+        file.write(dict_list)
+        pass
 
 
 students = [{'name': 'Иван',
@@ -73,9 +73,9 @@ students = [student for student in students if student['class'] != student_class
 teachers = [teacher for teacher in teachers if teacher['school'] != school]
 
 # 1
-save_data('My_Students', students)
+save_data('data/My_Students', students)
 # 2
-save_data('My_Teachers', teachers)
+save_data('data/My_Teachers', teachers)
 
 
 

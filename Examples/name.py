@@ -55,45 +55,46 @@ def school(data):
     lst_school = set(lst_school)
     return lst_school
 
-students = open('Students.json', 'r')
-teachers = open('Teachers.json', 'r')
-data_teachers = json.load(teachers)
-data_students = json.load(students)
 
+with open('data/Students.json', 'r') as students, open('data/Teachers.json', 'r') as teachers:
+    data_teachers = json.load(teachers)
+    data_students = json.load(students)
 
-lst_name_teachers = name(data_teachers)
-lst_name_students = name(data_students)
-print('1.1.1:', '\n')
-for el in lst_name_students:
-    print(el)
-print('1.1.2:', '\n')
-for el in lst_name_teachers:
-    print(el)
+    lst_name_teachers = name(data_teachers)
+    lst_name_students = name(data_students)
 
-student_class = '5 А'
-lst_students_class = class_room(data_students, student_class)
-print('1.1.3:', '\n')
-for el in lst_students_class:
-    print(el)
+    print('1.1.1:', '\n')
+    for el in lst_name_students:
+        print(el)
 
-schools = school(data_students)
-print('1.1.4:', '\n')
-for el in schools:
-    print(el)
+    print('1.1.2:', '\n')
+    for el in lst_name_teachers:
+        print(el)
 
-print('1.2.1:', '\n')
-teacher = 'Александр Черный'
-teacher_print, students_list = teacher_student(teacher, data_teachers, data_students)
-print(teacher_print)
-for el in students_list:
-    print(el)
+    student_class = '5 А'
+    lst_students_class = class_room(data_students, student_class)
+    print('1.1.3:', '\n')
+    for el in lst_students_class:
+        print(el)
 
-print('1.2.2:', '\n')
-student = 'Иван Иванов'
-teachers_list = student_teacher(student, data_teachers, data_students)
-for el in teachers_list:
-    print(el)
+    schools = school(data_students)
+    print('1.1.4:', '\n')
+    for el in schools:
+        print(el)
 
+    print('1.2.1:', '\n')
+    teacher = 'Александр Черный'
+    teacher_print, students_list = teacher_student(teacher, data_teachers, data_students)
+    print(teacher_print)
+    for el in students_list:
+        print(el)
+
+    print('1.2.2:', '\n')
+    student = 'Иван Иванов'
+    teachers_list = student_teacher(student, data_teachers, data_students)
+    for el in teachers_list:
+        print(el)
+    pass
 
 
 
